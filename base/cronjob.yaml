@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: example-cronjob
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: example-cronjob
+              image: docker.io/alpine:latest
+              command:
+                - sleep
+                - 10
+              env:
+                - name: EXAMPLE_FOO
+                  value: foo
+          restartPolicy: Never

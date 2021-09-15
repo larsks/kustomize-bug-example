@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+spec:
+  containers:
+    - name: example-pod
+      image: docker.io/alpine:latest
+      command:
+        - sleep
+        - 300
+      env:
+        - name: EXAMPLE_FOO
+          value: foo
+  volumes:
+    - name: htdocs
